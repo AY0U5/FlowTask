@@ -2,6 +2,7 @@ package com.backend.bean.project;
 
 import com.backend.bean.team.Team;
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,8 +18,12 @@ public class Project {
     )
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_sequence")
     private Long id;
+    @Column(length = 1000)
     private String name;
+    @Column(length = 10000)
     private String description;
+    @CreatedDate
+    @Column(updatable = false,nullable = false)
     private LocalDateTime createdDate;
     @OneToMany
     private List<Team> teams;

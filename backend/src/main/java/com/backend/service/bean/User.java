@@ -31,7 +31,8 @@ public class User implements UserDetails {
     private Boolean credentialsNonExpired;
     @OneToMany(mappedBy = "user")
     private List<TeamUser> teamUsers;
-    // private List<Role> authorities;
+    @OneToMany
+    private List<Authority> authorities;
 
 
     @Override
