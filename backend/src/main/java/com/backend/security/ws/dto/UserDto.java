@@ -1,5 +1,8 @@
 package com.backend.security.ws.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
+
 import java.util.List;
 
 public class UserDto {
@@ -7,7 +10,9 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String username;
+    @Size(min = 6, message = "Password should have 6 character minimum")
     private String password;
+    @Email(message = "Email format is not correct")
     private String email;
     private Boolean enabled;
     private Boolean accountNonLocked;

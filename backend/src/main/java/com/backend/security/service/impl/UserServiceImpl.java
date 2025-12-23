@@ -76,6 +76,7 @@ public class UserServiceImpl implements UserService {
         }
         List<Authority> authorities = new ArrayList<>();
         authorities.add(userAuthority);
+        user.setAuthorities(authorities);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(Boolean.TRUE);
         user.setAccountNonExpired(Boolean.TRUE);
@@ -107,7 +108,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void deleteById(Long aLong) {
-        dao.deleteById(aLong);
+    public void deleteByUsername(String username) {
+        dao.deleteByUsername(username);
     }
 }

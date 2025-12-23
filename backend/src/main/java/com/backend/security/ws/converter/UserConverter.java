@@ -1,8 +1,6 @@
 package com.backend.security.ws.converter;
 
-import com.backend.security.bean.Authority;
 import com.backend.security.bean.User;
-import com.backend.security.ws.dto.AuthorityDto;
 import com.backend.security.ws.dto.UserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -23,7 +21,9 @@ public class UserConverter {
         }
         User user = new User();
         BeanUtils.copyProperties(dto,user);
-        user.setAuthorities(dto.getAuthorities().stream().map(authorityConverter::toBean).toList());
+        if (dto.getAuthorities() != null) {
+            user.setAuthorities(dto.getAuthorities().stream().map(authorityConverter::toBean).toList());
+        }
         return user;
     }
 
@@ -33,7 +33,6 @@ public class UserConverter {
         }
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(bean,userDto);
-        //userDto.setAuthorities(bean.getAuthorities().stream().map(authorityConverter::toDto).toList());
         return userDto;
     }
 }
