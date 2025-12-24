@@ -1,5 +1,6 @@
 package com.backend.security.ws.dto;
 
+import com.backend.ws.dto.team.TeamUserDto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
@@ -18,7 +19,7 @@ public class UserDto {
     private Boolean accountNonLocked;
     private Boolean accountNonExpired;
     private Boolean credentialsNonExpired;
-    //private List<TeamUser> teamUsers;
+    private List<TeamUserDto> teamUsers;
     private List<AuthorityDto> authorities;
 
     public Long getId() {
@@ -99,6 +100,14 @@ public class UserDto {
 
     public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
         this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public List<TeamUserDto> getTeamUsers() {
+        return teamUsers;
+    }
+
+    public void setTeamUsers(List<TeamUserDto> teamUsers) {
+        this.teamUsers = teamUsers;
     }
 
     public List<AuthorityDto> getAuthorities() {
