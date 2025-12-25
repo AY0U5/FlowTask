@@ -27,4 +27,22 @@ public class TeamUserClientServiceImpl implements TeamUserClientService {
         owner.setRole(Role.OWNER);
         return dao.save(owner);
     }
+
+    @Override
+    public TeamUser addMember(Team team, User user) {
+        TeamUser member = new TeamUser();
+        member.setUser(user);
+        member.setTeam(team);
+        member.setRole(Role.MEMBER);
+        return member;
+    }
+
+    @Override
+    public TeamUser addManager(Team team, User user) {
+        TeamUser member = new TeamUser();
+        member.setUser(user);
+        member.setTeam(team);
+        member.setRole(Role.MANAGER);
+        return member;
+    }
 }
